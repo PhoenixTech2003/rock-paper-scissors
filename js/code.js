@@ -14,56 +14,58 @@ function getcomputerchoice() {
 }
 
 function playround(computerselection, playerselection){
-    //convert lowercaseplayerdelection to lowercase
-    let lowercaseplayerdelection = playerselection.toLowerCase()
-    //if computerselection = rock and lowercaseplayerdelection = scissors
-    if (computerselection === "rock" && lowercaseplayerdelection === "scissors"){
+    //convert lowercaseplayerselection to lowercase
+    let lowercaseplayerselection = playerselection.toLowerCase()
+    
+    //if computerselection = rock and lowercaseplayerselection = scissors
+    if (computerselection === "rock" && lowercaseplayerselection === "scissors"){
         // computer wins
-        return `You lose ${computerselection} beats ${lowercaseplayerdelection}`;
+        return 0;
 
     }
         
 
-    // if computerselection = scissors and lowercaseplayerdelection = rock
-    if (computerselection === "scissors" && lowercaseplayerdelection === "rock"){
+    // if computerselection = scissors and lowercaseplayerselection = rock
+    if (computerselection === "scissors" && lowercaseplayerselection === "rock"){
         // player wins
         return 1;
 
     }
+    
 
-    // if computerselection = rock and lowercaseplayerdelection = paper
-    if (computerselection === "rock" && lowercaseplayerdelection === "paper"){
+    // if computerselection = rock and lowercaseplayerselection = paper
+    if (computerselection === "rock" && lowercaseplayerselection === "paper"){
         // player wins
         return 1; 
 
     }
 
 
-    // if computerselection = paper and lowercaseplayerdelection = rock
-    if (computerselection === "paper" && lowercaseplayerdelection === "rock"){
+    // if computerselection = paper and lowercaseplayerselection = rock
+    if (computerselection === "paper" && lowercaseplayerselection === "rock"){
         // computer wins
         return 0;
 
     }
 
-    // if computerselection = scissors and lowercaseplayerdelection = paper
-    if (computerselection === "scissors" && lowercaseplayerdelection === "paper"){
+    // if computerselection = scissors and lowercaseplayerselection = paper
+    if (computerselection === "scissors" && lowercaseplayerselection === "paper"){
         // computer wins
         return 0;
 
     }
 
-    // if computerselection = paper and lowercaseplayerdelection = scissors
-    if (computerselection === "paper" && lowercaseplayerdelection === "scissors"){
+    // if computerselection = paper and lowercaseplayerselection = scissors
+    if (computerselection === "paper" && lowercaseplayerselection === "scissors"){
         // player wins
         return 1;
 
     }
 
-    // if computerselection === lowercaseplayerdelection
-    if (computerselection === lowercaseplayerdelection){
+    // if computerselection === lowercaseplayerselection
+    if (computerselection === lowercaseplayerselection){
         // draw
-        return "Draw";
+        return 2;
 
     }
 }
@@ -84,24 +86,26 @@ function game (){
 
         //varible keeping  winner
         let verifywinner = playround(computerselection,playerselection);
+         //increment loop tracker by one
+         count ++;
         //verify winner
-        if (verifywinner === 0){
-            alert(`You lose ${computerselection} beats ${playerselection}`);
-            //increase computer score
-            computerscore ++;
-
-        }else if (verifywinner === 1){
-            alert(`You Win ${computerselection} beats ${playerselection}`);
-            //increase playerscore
-            playerscore ++;
-        }else{
+        if (verifywinner === 2){
             alert(`It's a draw`)
             playerscore ++;
             computerscore ++;
         }
-        
-        //increment loop tracker by one
-        count ++;
+            if (verifywinner === 0){
+                alert(`You lose ${computerselection} beats ${playerselection}`);
+                //increase computer score
+                computerscore ++;
+    
+            }else if (verifywinner === 1){
+                alert(`You Win ${playerselection}  beats ${computerselection} `);
+                //increase playerscore
+                playerscore ++;
+            
+           
+        }
     }
 
     //determine winner
