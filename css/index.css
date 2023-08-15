@@ -9,7 +9,21 @@ body{
     font-family: sans-serif;
 }
 
+button{
+
+    padding: 30px;
+    border: 2px solid white;
+    background-color: white;
+    color: rgb(10, 139, 168);
+    border-radius: 5px;
+    box-shadow: 3px 5px ;
+}
+button:hover{
+    background-color: rgb(36, 215, 255);
+    color: white;
+}
 .score-board-container {
+
     color: aliceblue;
     display: flex;
     font-size: 100px;
@@ -22,4 +36,24 @@ body{
     display: flex;
     justify-content: center;
     gap: 50px;
+}
+
+.results-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    
+}
+
+p.result-text{
+    color: aliceblue;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.text-container {
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 5px 5px;
 }
