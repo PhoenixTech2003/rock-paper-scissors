@@ -17,3 +17,9 @@ body{
     gap: 20px;
     
 }
+
+.player-selection{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
