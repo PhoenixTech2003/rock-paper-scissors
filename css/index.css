@@ -1,0 +1,5 @@
+.score-board-container {
+    display: flex;
+    font-size: 100px;
+    justify-content: center;
+}
