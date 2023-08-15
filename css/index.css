@@ -57,3 +57,12 @@ p.result-text{
     padding: 20px;
     box-shadow: 5px 5px;
 }
+
+.name-cards{
+    display: flex;
+    font-weight: 900;
+    font-size: 20px;
+    color: white;
+    justify-content: center;
+    gap: 50px;
+}

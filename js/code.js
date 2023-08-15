@@ -15,7 +15,7 @@ function getcomputerchoice() {
 
 function playround(computerselection, playerselection){
     //convert lowercaseplayerselection to lowercase
-    let lowercaseplayerselection = playerselection.toLowerCase()
+    let lowercaseplayerselection = playerselection.toLowerCase();
     
     //if computerselection = rock and lowercaseplayerselection = scissors
     if (computerselection === "rock" && lowercaseplayerselection === "scissors"){
@@ -75,51 +75,72 @@ function game (){
     //create variable for computer score and player score
     let computerscore = 0;
     let playerscore = 0;
-    //create loop trackerr
-    let count = 0;
-  //create loop that plays for four rounds
-    while (count <= 4){
-        //call computer choice function
-        const computerselection = getcomputerchoice();
-        //prompt for user input
-        const playerselection = prompt("rock, paper, scissors?");
-
-        //varible keeping  winner
-        let verifywinner = playround(computerselection,playerselection);
-         //increment loop tracker by one
-         count ++;
-        //verify winner
-        if (verifywinner === 2){
-            alert(`It's a draw`)
-            playerscore ++;
-            computerscore ++;
-        }
-            if (verifywinner === 0){
-                alert(`You lose ${computerselection} beats ${playerselection}`);
-                //increase computer score
-                computerscore ++;
+  
     
-            }else if (verifywinner === 1){
-                alert(`You Win ${playerselection}  beats ${computerselection} `);
-                //increase playerscore
-                playerscore ++;
+        const controller = new AbortController()
+        const buttonSelection = document.querySelectorAll('button');
+        
+      buttonSelection.forEach((button) => button.addEventListener("click",function(e){
+            const computerselection = getcomputerchoice();
+            const playerselection = e.target.innerHTML;
+                let verifywinner = playround(computerselection,playerselection);
+                const playerScoreText = document.querySelector(".player-score");
+                const computerScoreText = document.querySelector(".computer-score");
+                
+                const resultText = document.querySelector('.result-text');
+                if (verifywinner === 2){
+                    resultText.textContent = `It's a draw`;
+                    computerscore ++;
+                    playerscore ++;
+                    computerScoreText.textContent = computerscore;
+                    playerScoreText.textContent = playerscore; 
+                }
+                if (verifywinner === 0){
+                        resultText.textContent = `You lose ${computerselection} beats ${playerselection.toLowerCase()}`;
+                        computerscore++;
+                        computerScoreText.textContent = computerscore ;
             
-           
-        }
-    }
+            
+                }else if (verifywinner === 1){
+                        resultText.textContent = `You Win ${playerselection.toLowerCase()}  beats ${computerselection} `;
+                        playerscore++;
+                        playerScoreText.textContent = playerscore;
+                    
+                    
+                   
+                }
 
-    //determine winner
-    if (computerscore > playerscore){
-        alert(`hahahah You lose I have ${computerscore} points and you have ${playerscore} points`);
-    }
+                //determine winner
+                if (computerscore === 5 || playerscore === 5){
+                    controller.abort();
+                    
+                    if (computerscore > playerscore){
+                        resultText.textContent = `hahahah You lose I have ${computerscore} points and you have ${playerscore} points`;
+                    }
 
-    if (playerscore > computerscore){
-        alert(`Oh snap You win I have ${computerscore} points and you have ${playerscore} points`);
-    }
+                    if (playerscore > computerscore){
+                        resultText.textContent =`Oh snap You win I have ${computerscore} points and you have ${playerscore} points`;
+                        return playerscore;
+                        
+                    }
 
-    if (playerscore === computerscore){
-        alert("It's a draw");
-    }
+                    if (playerscore === computerscore){
+                        resultText.textContent = "It's a draw";
+                        return playerscore;
+                        
+                    }
+
+                }
+                
+            },{signal : controller.signal}));
+            
+            
+            
+            
+    
+        
+        
+
 }
 
 
