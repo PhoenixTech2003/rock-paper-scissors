@@ -6,11 +6,14 @@
 
 body{
     background-color: rgb(36, 215, 255);
+    font-family: sans-serif;
 }
 
 .score-board-container {
+    color: aliceblue;
     display: flex;
     font-size: 100px;
     justify-content: center;
+    gap: 20px;
     
 }
